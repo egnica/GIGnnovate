@@ -1,95 +1,72 @@
-import Image from "next/image";
+"use client";
 import styles from "./page.module.css";
+import { useState, useEffect } from "react";
+import { motion } from "motion/react";
 
 export default function Home() {
+  const novateWords = [
+    "Innovate",
+    "Elevate",
+    "Create",
+    "Accelerate",
+    "Activate",
+    "Motivate",
+    "Captivate",
+  ];
+
+  const [currentIndex, setCurrentIndex] = useState(0);
+  const [activeSection, setActiveSection] = useState("");
+  const [dynamicWord, setDynamicWord] = useState(novateWords[0]);
+
+  useEffect(() => {
+    const interval = setInterval(() => {
+      setCurrentIndex((prevIndex) => {
+        const nextIndex = (prevIndex + 1) % novateWords.length;
+        setDynamicWord(novateWords[nextIndex]);
+        return nextIndex;
+      });
+    }, 2000); // Change word every 2 seconds
+
+    return () => clearInterval(interval);
+  }, []);
+
   return (
     <div className={styles.page}>
-      <main className={styles.main}>
-        <Image
-          className={styles.logo}
-          src="/next.svg"
-          alt="Next.js logo"
-          width={180}
-          height={38}
-          priority
-        />
-        <ol>
-          <li>
-            Get started by editing <code>app/page.js</code>.
-          </li>
-          <li>Save and see your changes instantly.</li>
-        </ol>
-
-        <div className={styles.ctas}>
-          <a
-            className={styles.primary}
-            href="https://vercel.com/new?utm_source=create-next-app&utm_medium=appdir-template&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            <Image
-              className={styles.logo}
-              src="/vercel.svg"
-              alt="Vercel logomark"
-              width={20}
-              height={20}
-            />
-            Deploy now
-          </a>
-          <a
-            href="https://nextjs.org/docs?utm_source=create-next-app&utm_medium=appdir-template&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-            className={styles.secondary}
-          >
-            Read our docs
-          </a>
+      <div className={styles.heroContain}>
+        <h1>
+          <span style={{ fontSize: "35px", marginTop: "30px" }}>What is</span>
+          <br></br>
+          <span style={{ fontSize: "70px" }}>GIG</span>nnovate?
+        </h1>
+        <hr className={styles.divideLine} />
+        <h3>
+          GIGnnovate helps creators, startups, and small businesses launch
+          modern websites, standout branding, and inspired content. All built
+          with speed, clarity, and intention.
+        </h3>
+        <div className={styles.novateContain}>
+          <h1>GIG</h1>
+          <h1>+</h1>
+          <h1>{dynamicWord}</h1>
+          <h1>=</h1>
+          <h1>
+            <span style={{ fontSize: "50px" }}>GIG</span>nnovate
+          </h1>
         </div>
-      </main>
-      <footer className={styles.footer}>
-        <a
-          href="https://nextjs.org/learn?utm_source=create-next-app&utm_medium=appdir-template&utm_campaign=create-next-app"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <Image
-            aria-hidden
-            src="/file.svg"
-            alt="File icon"
-            width={16}
-            height={16}
-          />
-          Learn
-        </a>
-        <a
-          href="https://vercel.com/templates?framework=next.js&utm_source=create-next-app&utm_medium=appdir-template&utm_campaign=create-next-app"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <Image
-            aria-hidden
-            src="/window.svg"
-            alt="Window icon"
-            width={16}
-            height={16}
-          />
-          Examples
-        </a>
-        <a
-          href="https://nextjs.org?utm_source=create-next-app&utm_medium=appdir-template&utm_campaign=create-next-app"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <Image
-            aria-hidden
-            src="/globe.svg"
-            alt="Globe icon"
-            width={16}
-            height={16}
-          />
-          Go to nextjs.org →
-        </a>
-      </footer>
+      </div>
+
+      <div className={styles.btnGroup}>
+        <div className={styles.btn} onClick={() => setActiveSection("1")}>
+          What We Do
+        </div>
+        <div className={styles.btn} onClick={() => setActiveSection("2")}>
+          Why GIGnnovate
+        </div>
+        <div className={styles.btn} onClick={() => setActiveSection("3")}>
+          Let’s Work Together
+        </div>
+      </div>
+      {}
     </div>
   );
 }
