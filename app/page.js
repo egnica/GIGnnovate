@@ -5,21 +5,91 @@ import { motion, AnimatePresence } from "motion/react";
 import GigScroll from "../components/GigScroll.jsx";
 
 export default function Home() {
+  const [formContent, setFormContent] = useState({
+    name: null,
+    address: null,
+    message: null,
+  });
+
+  const summitHandler = (e) => {
+    e.preventDefault();
+  };
+
   const btnTrioText = [
     {
-      header: "THIS TEXT1",
-      body: "Lorem ipsum dolor sit amet consectetur adipiscing elit. Consectetur adipiscing elit quisque faucibus ex sapien vitae. Ex sapien vitae pellentesque sem placerat in id. Placerat in id cursus mi pretium tellus duis. Pretium tellus duis convallis tempus leo eu aenean.",
+      header: "Make Your Mark!",
+      body: (
+        <>
+          <hr />
+          <p>
+            Whether you have a grand vision, or don't!
+            <br />
+            GIGnnovate is here to help you make your mark online. <br />
+            <br />
+            Big or small, every project deserves a strong presence. Whether
+            you’re launching a brand, building a business, or just need a
+            professional home online, we’ll help you get there. <br />
+            <br />
+            Bring your ideas, your goals, or just your ambition. GIGnnovate will
+            take it from there.
+          </p>
+          <hr />
+        </>
+      ),
     },
     {
-      header: "THIS TEXT2",
-      body: "Lorem ipsum dolor sit amet consectetur adipiscing elit. Amet consectetur adipiscing elit quisque faucibus ex sapien. Quisque faucibus ex sapien vitae pellentesque sem placerat. Vitae pellentesque sem placerat in id cursus mi.",
+      header: "Why GIGnnovate?",
+      body: (
+        <>
+          <hr />
+          <p>
+            GIGnnovate is built to be nimble, flexible, and focused, giving you
+            a real partnership from start to finish. <br /> <br />
+            No templates. No shortcuts. <br />
+            Every project is custom-built to fit your goals, your brand, and
+            your audience, not squeezed into a cookie-cutter mold. We
+            collaborate with you to create a digital experience that feels
+            authentic, functions seamlessly, and grows with you.
+            <br /> <br />
+            <strong> Creative solutions. Real results.</strong>
+          </p>
+          <hr />
+        </>
+      ),
     },
     {
-      header: "THIS TEXT3",
-      body: "Lorem ipsum dolor sit amet consectetur adipiscing elit. Adipiscing elit quisque faucibus ex sapien vitae pellentesque. Vitae pellentesque sem placerat in id cursus mi. Cursus mi pretium tellus duis convallis tempus leo. Tempus leo eu aenean sed diam urna tempor. Urna tempor pulvinar vivamus fringilla lacus nec metus.",
+      header: "Let's Connect",
+      body: (
+        <form onSubmit={summitHandler}>
+          <p>
+            Lorem ipsum dolor sit amet consectetur adipiscing elit. Dolor sit
+            amet consectetur adipiscing elit quisque faucibus.
+          </p>
+          <label>Name: </label>
+          <input
+            type="text"
+            onChange={(e) =>
+              setFormContent((item) => ({
+                ...item,
+                name: e.target.value,
+              }))
+            }
+          />
+          <div className={styles.formCont}>
+            <label>Email: </label>
+            <input
+              type="text"
+              onChange={(e) =>
+                setFormContent((item) => ({
+                  ...item,
+                  address: e.target.value,
+                }))
+              }
+            />
+          </div>
+        </form>
+      ),
     },
-
-    ,
   ];
 
   const [activeSection, setActiveSection] = useState(null);
@@ -59,18 +129,18 @@ export default function Home() {
     <div className={styles.page}>
       <div className={styles.headerContain}>
         <div className={styles.heroOneContain}>
-          <h1>
+          <h1 style={{ margin: "20px 0 0 0" }}>
             <span style={{ fontSize: "35px", marginTop: "30px" }}>What is</span>
             <br></br>
             <span style={{ fontSize: "70px" }}>GIG</span>nnovate?
           </h1>
-          <hr className={styles.divideLine} />
+          <div className={styles.divideLine} />
           <div className={styles.heroDecrip}>
             <h3>
               <span style={colorGrad()}>GIGnnovate</span> helps creators,
               startups, and small businesses launch modern websites, standout
-              branding, and inspired content. All built with speed, clarity, and
-              intention.
+              branding, inspired content, and smart digital solutions. Built
+              fast. Built clear. Built with purpose.
             </h3>
           </div>
         </div>
@@ -81,7 +151,7 @@ export default function Home() {
               className={styles.btnHero2}
               onClick={() => triClickHandler("0")}
             >
-              What We Do
+              Make Your Mark
             </div>
             <div
               className={styles.btnHero2}
@@ -93,7 +163,7 @@ export default function Home() {
               className={styles.btnHero2}
               onClick={() => triClickHandler("2")}
             >
-              Let’s Work Together
+              Launch Your Experience
             </div>
           </div>
           <AnimatePresence mode="wait">
@@ -118,7 +188,7 @@ export default function Home() {
                       <motion.h1 initial={{ x: -100 }} animate={{ x: 0 }}>
                         {btnTrioText[activeSection].header}
                       </motion.h1>
-                      <p>{btnTrioText[activeSection].body}</p>
+                      <div>{btnTrioText[activeSection].body}</div>
                     </motion.div>
                   ) : null}
                 </AnimatePresence>
@@ -127,8 +197,10 @@ export default function Home() {
           </AnimatePresence>
         </div>
       </div>
-      {/* <div style={{ paddingTop: "90px" }}></div> */}
-      <GigScroll />
+
+      <div className={styles.gigScrollContain} style={{}}>
+        <GigScroll />
+      </div>
     </div>
   );
 }

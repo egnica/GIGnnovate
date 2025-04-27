@@ -34,6 +34,7 @@ function GigScroll() {
       <h1>+</h1>
       <AnimatePresence mode="wait">
         <motion.h1
+          style={{ width: "350px" }}
           key={dynamicWord}
           initial={{ opacity: 0, y: -30 }}
           animate={{ opacity: 1, y: 0 }}

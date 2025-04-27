@@ -22,7 +22,7 @@ COLORS VAR SET
 }
 .heroOneContain {
   display: grid;
-  padding: 0 10%;
+  padding: 0 5%;
   text-align: left;
 }
 .heroOneContain h1 {
@@ -33,24 +33,15 @@ COLORS VAR SET
   height: auto;
 }
 .heroOneContain h3 {
-  font-size: 25px;
+  font-size: 27px;
   font-weight: 100;
   line-height: 1.8;
 }
 
 .divideLine {
-  margin: 0 0 0 0;
+  border-top: 1px black solid;
 }
-.novateContain {
-  display: grid;
-  grid-template-columns: 0.2fr 0.1fr 0.5fr 0.1fr 0.3fr;
-  gap: 20px;
-  padding: 0 10%;
-  margin: auto;
-}
-.novateContain h1 {
-  font-size: 4rem;
-}
+
 .heroTwoContain {
   display: flex;
   flex-direction: column;
@@ -81,12 +72,38 @@ COLORS VAR SET
 }
 .threeButtonReveal {
   padding: 30px;
+  border-radius: 10px;
 }
 .revealText h1 {
   margin: 0;
   font-size: 38px;
 }
 .revealText p {
-  font-size: 27px;
+  font-size: 20px;
   font-weight: lighter;
+}
+
+/* GigScroll component */
+.gigScrollContain {
+  display: grid;
+  place-content: center;
+}
+
+.novateContain {
+  display: grid;
+  grid-template-columns: 0.2fr 0.1fr 0.5fr 0.1fr 0.3fr;
+  gap: 20px;
+  margin: 10px;
+
+  width: 100%;
+}
+.novateContain h1 {
+  font-size: 4rem;
+  text-align: center;
+}
+.formCont {
+  text-align: left;
+}
+.formCont label {
+  width: 240px;
 }
