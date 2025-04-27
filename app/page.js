@@ -35,7 +35,6 @@ export default function Home() {
     }
   };
 
-  console.log(isHidden);
   const colorGrad = () => {
     return { color: "blue" };
   };
