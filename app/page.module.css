@@ -1,3 +1,14 @@
+/* 
+
+COLORS VAR SET
+--color-navy: #041D3E;
+--color-blue: #1E6194;
+--color-gray: #A0A3A3;
+--color-background: #F3F7FF;
+--color-accent: #79C019; 
+
+*/
+
 .navContain {
   display: flex;
   padding: 10px;
@@ -5,30 +16,77 @@
 .page {
   padding: 10px;
 }
-.heroContain {
+.headerContain {
   display: grid;
-  place-content: center;
-  padding: 0 10%;
+  grid-template-columns: 1fr 1fr;
 }
-.heroContain h1 {
-  margin: auto;
+.heroOneContain {
+  display: grid;
+  padding: 0 10%;
+  text-align: left;
+}
+.heroOneContain h1 {
   font-size: 60px;
 }
-.heroContain h3 {
+.heroDecrip {
+  width: auto;
+  height: auto;
+}
+.heroOneContain h3 {
   font-size: 25px;
   font-weight: 100;
   line-height: 1.8;
 }
 
 .divideLine {
-  margin: 0 12%;
+  margin: 0 0 0 0;
 }
 .novateContain {
   display: grid;
   grid-template-columns: 0.2fr 0.1fr 0.5fr 0.1fr 0.3fr;
-  place-content: center;
+  gap: 20px;
+  padding: 0 10%;
+  margin: auto;
 }
 .novateContain h1 {
-  font-size: 40px;
+  font-size: 4rem;
+}
+.heroTwoContain {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: flex-start;
+  overflow: hidden;
+  width: 100%;
+  margin: 0 auto; /* center it horizontally */
+  /* background-color: blue; */
+}
+.btnGroup {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+  color: var(--color-background);
+  padding-bottom: 20px;
+  width: 100%;
+  text-align: center;
+}
+.btnHero2 {
+  display: grid;
+  place-content: center;
+  background-color: var(--color-blue);
   margin: auto;
+  border-radius: 10px;
+  cursor: pointer;
+  width: 90%;
+  height: 40px;
+}
+.threeButtonReveal {
+  padding: 30px;
+}
+.revealText h1 {
+  margin: 0;
+  font-size: 38px;
+}
+.revealText p {
+  font-size: 27px;
+  font-weight: lighter;
 }

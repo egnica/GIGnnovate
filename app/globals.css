@@ -1,4 +1,10 @@
-
+:root {
+  --color-navy: #041d3e;
+  --color-blue: #1e6194;
+  --color-gray: #a0a3a3;
+  --color-background: #f3f7ff;
+  --color-accent: #79c019;
+}
 
 html,
 body {
@@ -7,7 +13,6 @@ body {
 }
 
 body {
-  color: var(--foreground);
   background: var(--background);
   font-family: Arial, Helvetica, sans-serif;
   -webkit-font-smoothing: antialiased;
