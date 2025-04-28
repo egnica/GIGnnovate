@@ -12,7 +12,6 @@ COLORS VAR SET
 .navContain {
   display: flex;
   padding: 10px;
-  align-items: center;
 }
 
 .page {
@@ -33,6 +32,7 @@ COLORS VAR SET
   margin-left: auto;
   padding: 15px;
   margin-right: 10px;
+  flex-shrink: 0;
 }
 .heroOneContain {
   display: grid;
