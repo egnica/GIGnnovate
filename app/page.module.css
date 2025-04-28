@@ -12,13 +12,27 @@ COLORS VAR SET
 .navContain {
   display: flex;
   padding: 10px;
+  align-items: center;
 }
+
 .page {
   padding: 10px;
 }
 .headerContain {
   display: grid;
   grid-template-columns: 1fr 1fr;
+}
+.headerBtn {
+  color: #f3f7ff;
+  place-content: center;
+  background-color: var(--color-blue);
+  border-radius: 10px;
+  cursor: pointer;
+  text-align: center;
+  height: 40px;
+  margin-left: auto;
+  padding: 15px;
+  margin-right: 10px;
 }
 .heroOneContain {
   display: grid;
