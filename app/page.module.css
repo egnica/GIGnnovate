@@ -118,6 +118,6 @@ COLORS VAR SET
 .formCont {
   text-align: left;
 }
-.formCont label {
-  width: 240px;
+.formCont input {
+  width: 400px;
 }

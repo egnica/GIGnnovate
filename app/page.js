@@ -6,13 +6,31 @@ import GigScroll from "../components/GigScroll.jsx";
 
 export default function Home() {
   const [formContent, setFormContent] = useState({
-    name: null,
-    address: null,
-    message: null,
+    name: "",
+    address: "",
+    message: "",
   });
 
-  const summitHandler = (e) => {
+  const summitHandler = async (e) => {
     e.preventDefault();
+
+    const res = await fetch("/api/contact", {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify(formContent),
+    });
+    if (res.ok) {
+      console.log("Form Submitted");
+      setFormContent({
+        name: "",
+        address: "",
+        message: "",
+      });
+    } else {
+      console.log("Submission Failed");
+    }
   };
 
   const btnTrioText = [
@@ -65,20 +83,27 @@ export default function Home() {
             Lorem ipsum dolor sit amet consectetur adipiscing elit. Dolor sit
             amet consectetur adipiscing elit quisque faucibus.
           </p>
-          <label>Name: </label>
-          <input
-            type="text"
-            onChange={(e) =>
-              setFormContent((item) => ({
-                ...item,
-                name: e.target.value,
-              }))
-            }
-          />
           <div className={styles.formCont}>
+            <label id="name">Name: </label>
+            <br />
+            <input
+              htmlFor="name"
+              type="text"
+              value={formContent.name}
+              onChange={(e) =>
+                setFormContent((item) => ({
+                  ...item,
+                  name: e.target.value,
+                }))
+              }
+            />
+            <br />
+            <br />
             <label>Email: </label>
+            <br />
             <input
               type="text"
+              value={formContent.address}
               onChange={(e) =>
                 setFormContent((item) => ({
                   ...item,
@@ -86,7 +111,24 @@ export default function Home() {
                 }))
               }
             />
+            <br />
+            <br />
+            <label>Message: </label>
+            <br />
+            <textarea
+              type="text"
+              value={formContent.message}
+              onChange={(e) =>
+                setFormContent((item) => ({
+                  ...item,
+                  message: e.target.value,
+                }))
+              }
+            />
           </div>
+          <button type="submit" value="submit">
+            Submit
+          </button>
         </form>
       ),
     },
