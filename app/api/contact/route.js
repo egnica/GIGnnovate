@@ -4,10 +4,8 @@ const resend = new Resend(process.env.RESEND_API_KEY);
 
 export async function POST(req) {
   try {
-    const body = await req.json(); // Get the posted data
+    const body = await req.json(); //  posted data
     const { name, address, message } = body;
-
-    console.log("Preparing to send email...");
 
     await resend.emails.send({
       from: "GIGnnovate Contact <onboarding@resend.dev>",
@@ -21,7 +19,7 @@ export async function POST(req) {
     });
     await resend.emails.send({
       from: "GIGnnovate Contact <onboarding@resend.dev>",
-      to: address, // the user's email
+      to: address,
       subject: "Thanks for contacting GIGnnovate!",
       html: `
           <p>Hi ${name},</p>
@@ -29,8 +27,6 @@ export async function POST(req) {
           <p>- GIGnnovate</p>
         `,
     });
-
-    console.log("Email send attempt finished");
 
     return new Response("Success", { status: 200 });
   } catch (error) {
